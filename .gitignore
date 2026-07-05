@@ -210,3 +210,7 @@ __marimo__/
 
 ny_taxi_postgres_data/*
 pipeline/ny_taxi_postgres_data/*
+
+
+#other files
+pipeline/data_ingestion.ipynb
