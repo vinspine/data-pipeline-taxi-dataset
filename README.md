@@ -31,3 +31,11 @@ The following diagram summarizes the Docker Compose architecture:
 </p>
 
 
+While the entire worflow is summarized by the following picture: 
+
+<p align="center">
+<img width="791" height="501" alt="Workflow_taxi_data" src="https://github.com/user-attachments/assets/b8f6323b-90f1-41eb-ae69-55a1664de972" />
+</p>
+
+
+
