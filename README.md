@@ -1,4 +1,4 @@
-# data-pipeline-taxi-dataset
+# Dockerized taxi data pipeline
 
 This project implements a data pipeline that ingests NYC Taxi trip data from CSV files and loads it into a PostgreSQL database.
 
