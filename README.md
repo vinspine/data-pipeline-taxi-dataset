@@ -1,20 +1,33 @@
 # data-pipeline-taxi-dataset
 
-This project builds a data pipeline that ingests NYC Taxi trip data from CSV files and loads it into a PostgreSQL database.
-The pipeline downloads the data from the official NYC TLC dataset release and uses a Python script to transform and populate a PostgreSQL table.
+This project implements a data pipeline that ingests NYC Taxi trip data from CSV files and loads it into a PostgreSQL database.
 
-In particular, the python script receives as input the month and the year of the file csv that will be downloaded, establishes a connection to postgreSQL database, creates a new table in the schema (if it already exists, it will be replaced with the new one) named: "yellow_taxi_data_{db_year}_{db_month}" and upload the csv file in chunks of  100.000 records. 
+The pipeline downloads the data from the official NYC TLC dataset release and uses a Python ingestion script to process and populate PostgreSQL tables.
 
-In order to make the pipeline even more interesting, we use a docker compose file, where we define 4 services:
-- pgdatabase: the PostegreSQL service
-- pgadmin: web interface service to query the tables
-- ingest_2019_01: service based on the ingest_data.py script that downloads the csv of NYC Taxi Trip data from Jenuary 2019 and upload into the brand-new table
-- ingest_2019_02: same as the previous point. It uses the csv of NYC Taxi Data from February 2019
+The Python script receives the year and month of the dataset as input parameters. It then:
 
-We report this brief schema to summarize the docker compose:
+1. Downloads the corresponding NYC Taxi CSV file.
+2. Establishes a connection to the PostgreSQL database.
+3. Creates a new table named `yellow_taxi_data_{db_year}_{db_month}`. If the table already exists, it is replaced.
+4. Loads the CSV data into PostgreSQL in chunks of 100,000 records to avoid memory issues.
+
+Before loading the data into the database, two additional columns are added:
+
+- **source**: the URL from which the CSV file was downloaded.
+- **load_timestamp**: the timestamp indicating when the record was loaded into the database.
+
+To make the pipeline reproducible and easier to deploy, Docker Compose is used to define four services:
+
+- **pgdatabase**: PostgreSQL database service.
+- **pgadmin**: web interface used to inspect and query the database tables.
+- **ingest_2019_01**: ingestion service based on the `ingest_data.py` script. It downloads the NYC Taxi Trip dataset for January 2019 and loads it into PostgreSQL.
+- **ingest_2019_02**: ingestion service similar to the previous one, but using the February 2019 dataset.
+
+The following diagram summarizes the Docker Compose architecture:
 
 
 <p align="center">
 <img width="371" height="461" alt="Docker_compose_content" src="https://github.com/user-attachments/assets/5aa28387-4666-4462-9238-37925a513430" />
 </p>
+
 
