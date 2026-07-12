@@ -6,12 +6,12 @@ pg_pass = os.getenv("DB_PASSWORD")
 pg_host = os.getenv("DB_HOST")
 pg_port = int(os.getenv("DB_PORT"))
 pg_db = os.getenv("DB_NAME")
-target_table = os.getenv("DB_TABLE")
 
 
 # information about the year and month of the data to be ingested is also stored in environment variables.
 db_year = os.getenv("DB_YEAR")
 db_month = os.getenv("DB_MONTH")
+target_table = f'yellow_taxi_data_{db_year}_{db_month}'
 
 
 # Read from the URL and limit to 100 rows for testing purposes. This allows us to quickly 

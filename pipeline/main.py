@@ -9,12 +9,11 @@ logging.basicConfig(
     stream=sys.stdout,
     )
 
-logger = logging.getLogger(__name__)
 
 def main():
-    logger.info("Starting the data ingestion pipeline.")
+    logging.info("Starting pipeline...")
     ingest_data.run()
-    logger.info("Pipeline completed successfully.")
+    logging.info("Pipeline completed.")
 
 if __name__ == "__main__":
     main()
