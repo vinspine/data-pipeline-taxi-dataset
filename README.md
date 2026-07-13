@@ -38,4 +38,12 @@ while the entire worflow is summarized by the following picture:
 </p>
 
 
+Below, the logs of the execution:
+
+<p align="center">
+
+<img width="746" height="309" alt="Screenshot 2026-07-12 at 18 35 00" src="https://github.com/user-attachments/assets/48ea6dc7-70e0-4ea5-926b-3f0f5cc18940" />
+</p>
+
+
 
